@@ -269,3 +269,10 @@ h2 { margin-bottom: 22px; font-size: clamp(37px, 4.4vw, 54px); line-height: 1.08
 .verispace-qr { position: relative; z-index: 1; display: block; width: min(100%, 350px); max-height: 390px; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 14px 32px rgba(30,40,32,.10); }
 .verispace-qr-panel .art-label { z-index: 2; left: 0; right: 0; bottom: 13px; text-align: center; color: #596d5d; }
 .qr-instruction { margin: -5px 0 18px; color: #6e7971; font-size: 11px; }
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+}
