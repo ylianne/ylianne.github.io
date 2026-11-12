@@ -459,3 +459,15 @@ html body .section-certifications .certificate-preview {
         grid-template-columns: 1fr !important;
     }
 }
+
+
+/* Align certificate card bottoms */
+html body .section-certifications .certificate-grid {
+    align-items: stretch !important;
+}
+
+html body .section-certifications .certificate-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
