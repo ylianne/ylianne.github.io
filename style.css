@@ -564,3 +564,116 @@ h2 { margin-bottom: 22px; font-size: clamp(37px, 4.4vw, 54px); line-height: 1.08
         transition: none !important;
     }
 }
+
+
+
+/* =========================================
+   LIVING BACKGROUND — MINIMALIST SAGE THEME
+========================================= */
+
+/* Animated hero background */
+.hero {
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(
+        120deg,
+        #f7f6f2,
+        #edf2eb,
+        #f1eade,
+        #f7f6f2
+    );
+    background-size: 250% 250%;
+    animation: heroGradientFlow 18s ease-in-out infinite alternate;
+}
+
+/* Soft ambient glowing shapes */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -12%;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 18% 28%,
+            rgba(123, 141, 123, 0.24),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 78% 25%,
+            rgba(233, 224, 210, 0.65),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 55% 85%,
+            rgba(210, 223, 207, 0.38),
+            transparent 35%
+        );
+
+    filter: blur(24px);
+    animation: ambientGlow 20s ease-in-out infinite alternate;
+}
+
+/* Keep hero content above the background */
+.hero > .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Background animation */
+@keyframes heroGradientFlow {
+    0% {
+        background-position: 0% 30%;
+    }
+    50% {
+        background-position: 100% 60%;
+    }
+    100% {
+        background-position: 30% 100%;
+    }
+}
+
+@keyframes ambientGlow {
+    0% {
+        transform: translate3d(-2%, -1%, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(2%, 2%, 0) scale(1.06);
+    }
+    100% {
+        transform: translate3d(-1%, 3%, 0) scale(1.02);
+    }
+}
+
+/* Softer background transitions between sections */
+.section-about {
+    background: linear-gradient(135deg, #fffefa, #f0f3ed);
+}
+
+.section-skills {
+    background: linear-gradient(135deg, #f7f6f2, #edf1e9);
+}
+
+.section-projects {
+    background: linear-gradient(135deg, #fffefa, #f5f1e9);
+}
+
+.section-certifications {
+    background: linear-gradient(135deg, #f7f6f2, #edf1e9);
+}
+
+.section-education {
+    background: linear-gradient(135deg, #f7f6f2, #f0f0e9);
+}
+
+/* Respect reduced-motion accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+    .hero {
+        animation: none;
+    }
+
+    .hero::before {
+        animation: none;
+    }
+}
