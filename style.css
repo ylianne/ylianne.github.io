@@ -725,3 +725,50 @@ body::before {
     }
 }
 
+
+/* =========================================
+   FINAL AMBIENT BACKGROUND ADJUSTMENTS
+========================================= */
+
+/* Correctly position the hero glow */
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Let the ambient colors show through more clearly */
+.section-about,
+.section-projects,
+.section-documents {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 254, 250, 0.62),
+        rgba(255, 254, 250, 0.35)
+    );
+}
+
+.section-skills,
+.section-certifications,
+.section-education {
+    background: linear-gradient(
+        135deg,
+        rgba(231, 237, 228, 0.58),
+        rgba(247, 246, 242, 0.32)
+    );
+}
+
+/* Softer glass-like header */
+.site-header {
+    background: rgba(247, 246, 242, 0.82);
+}
+
+/* More transparent surrounding sections */
+.intro-strip {
+    background: rgba(255, 254, 250, 0.38);
+}
+
+.site-footer {
+    background: rgba(247, 246, 242, 0.68);
+}
