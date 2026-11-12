@@ -429,3 +429,33 @@ h2 { margin-bottom: 22px; font-size: clamp(37px, 4.4vw, 54px); line-height: 1.08
     }
 }
 
+
+/* FORCE CERTIFICATIONS INTO A 2 x 2 GRID */
+
+html body .section-certifications .certificate-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-flow: row !important;
+    gap: 24px !important;
+    width: 100% !important;
+}
+
+html body .section-certifications .certificate-card {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: none !important;
+}
+
+/* Keep certificate previews properly sized */
+html body .section-certifications .certificate-preview {
+    width: 100%;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    html body .section-certifications .certificate-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
