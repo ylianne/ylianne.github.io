@@ -619,7 +619,9 @@ body::before {
 
 /* More pronounced glow in the hero area */
 .hero {
+    position: relative;
     isolation: isolate;
+    overflow: hidden;
     background: transparent;
 }
 
