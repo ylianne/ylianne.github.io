@@ -568,112 +568,160 @@ h2 { margin-bottom: 22px; font-size: clamp(37px, 4.4vw, 54px); line-height: 1.08
 
 
 /* =========================================
-   LIVING BACKGROUND — MINIMALIST SAGE THEME
+   FULL PAGE AMBIENT BACKGROUND
+   SOFT SAGE • WARM IVORY • BEIGE
 ========================================= */
 
-/* Animated hero background */
-.hero {
+/* Warm ivory base */
+body {
     position: relative;
     isolation: isolate;
-    background: linear-gradient(
-        120deg,
-        #f7f6f2,
-        #edf2eb,
-        #f1eade,
-        #f7f6f2
-    );
-    background-size: 250% 250%;
-    animation: heroGradientFlow 18s ease-in-out infinite alternate;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8f7f2 0%,
+            #f1f3ed 48%,
+            #f5eee4 100%
+        );
 }
 
-/* Soft ambient glowing shapes */
+/* Floating blurred ambient shapes throughout the page */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -18%;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse 38% 32% at 15% 18%,
+            rgba(145, 168, 141, 0.34),
+            transparent 75%
+        ),
+        radial-gradient(
+            ellipse 36% 30% at 85% 30%,
+            rgba(228, 211, 185, 0.48),
+            transparent 75%
+        ),
+        radial-gradient(
+            ellipse 42% 35% at 55% 85%,
+            rgba(180, 200, 174, 0.28),
+            transparent 75%
+        );
+
+    filter: blur(55px);
+    opacity: 0.95;
+
+    animation: ambientDrift 28s ease-in-out infinite alternate;
+}
+
+/* More pronounced glow in the hero area */
+.hero {
+    isolation: isolate;
+    background: transparent;
+}
+
 .hero::before {
     content: "";
     position: absolute;
-    inset: -12%;
+    inset: -10%;
     z-index: 0;
     pointer-events: none;
 
     background:
         radial-gradient(
-            circle at 18% 28%,
-            rgba(123, 141, 123, 0.24),
-            transparent 30%
+            circle at 18% 35%,
+            rgba(151, 174, 145, 0.30),
+            transparent 34%
         ),
         radial-gradient(
-            circle at 78% 25%,
-            rgba(233, 224, 210, 0.65),
+            circle at 82% 28%,
+            rgba(232, 215, 188, 0.45),
             transparent 32%
-        ),
-        radial-gradient(
-            circle at 55% 85%,
-            rgba(210, 223, 207, 0.38),
-            transparent 35%
         );
 
-    filter: blur(24px);
-    animation: ambientGlow 20s ease-in-out infinite alternate;
+    filter: blur(38px);
+    animation: heroGlow 20s ease-in-out infinite alternate;
 }
 
-/* Keep hero content above the background */
 .hero > .container {
     position: relative;
     z-index: 1;
 }
 
-/* Background animation */
-@keyframes heroGradientFlow {
-    0% {
-        background-position: 0% 30%;
-    }
-    50% {
-        background-position: 100% 60%;
-    }
-    100% {
-        background-position: 30% 100%;
-    }
+/* Alternating translucent section backgrounds */
+.section-about,
+.section-projects,
+.section-documents {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 254, 250, 0.78),
+            rgba(255, 254, 250, 0.48)
+        );
 }
 
-@keyframes ambientGlow {
+.section-skills,
+.section-certifications,
+.section-education {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(231, 237, 228, 0.74),
+            rgba(247, 246, 242, 0.48)
+        );
+}
+
+/* Keep existing warm sections visually connected */
+.intro-strip {
+    background: rgba(255, 254, 250, 0.48);
+}
+
+.section-contact {
+    background:
+        linear-gradient(
+            125deg,
+            rgba(226, 235, 224, 0.94),
+            rgba(243, 233, 218, 0.94)
+        );
+}
+
+.site-footer {
+    background: rgba(247, 246, 242, 0.82);
+}
+
+/* Slow organic motion */
+@keyframes ambientDrift {
     0% {
         transform: translate3d(-2%, -1%, 0) scale(1);
     }
+
     50% {
         transform: translate3d(2%, 2%, 0) scale(1.06);
     }
+
     100% {
         transform: translate3d(-1%, 3%, 0) scale(1.02);
     }
 }
 
-/* Softer background transitions between sections */
-.section-about {
-    background: linear-gradient(135deg, #fffefa, #f0f3ed);
+@keyframes heroGlow {
+    0% {
+        transform: translate3d(-2%, 0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate3d(2%, 2%, 0) scale(1.08);
+    }
 }
 
-.section-skills {
-    background: linear-gradient(135deg, #f7f6f2, #edf1e9);
-}
-
-.section-projects {
-    background: linear-gradient(135deg, #fffefa, #f5f1e9);
-}
-
-.section-certifications {
-    background: linear-gradient(135deg, #f7f6f2, #edf1e9);
-}
-
-.section-education {
-    background: linear-gradient(135deg, #f7f6f2, #f0f0e9);
-}
-
-/* Respect reduced-motion accessibility settings */
+/* Accessibility: reduce animation when requested */
 @media (prefers-reduced-motion: reduce) {
-    .hero {
-        animation: none;
-    }
-
+    body::before,
     .hero::before {
-        animation: none;
+        animation: none !important;
     }
 }
+
